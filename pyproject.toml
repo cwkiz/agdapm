@@ -1,0 +1,18 @@
+[project]
+name = "agdapm"
+version = "0.0.1"
+authors = [
+  { name="Demetrius", email="illegalbassmedicine@proton.me" },
+]
+description = "A small package manager for Agda"
+readme = "README.md"
+requires-python = ">=3.9"
+classifiers = [
+    "Agda I Guess"
+]
+license = "MIT"
+license-files = ["LICEN[CS]E*"]
+
+[build-system]
+requires = ["hatchling >= 1.26"]
+build-backend = "hatchling.build"
