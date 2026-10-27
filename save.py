@@ -18,9 +18,16 @@ def get_installed_agda_files():
 def generate_defaults():
     files = get_installed_agda_files()
     defaults.write_text(
-        "".join(f"{file.stem}\n" for file in files),
+        "".join(f"{get_library_title(file)}\n" for file in files),
         encoding="utf-8",
     )
+
+def get_library_title(file: Path) -> str:
+    for line in file.read_text(encoding="utf-8").splitlines():
+        key, separator, value = line.partition(":")
+        if separator and key.strip() == "name" and value.strip():
+            return value.strip()
+    return file.stem
 
 def generate_libraries():
     files = get_installed_agda_files()
@@ -53,3 +60,6 @@ def download_into_agdapm(git: str) -> Path:
 
     subprocess.run(["git", "clone", git, str(repo_dir)], check=True)
     return repo_dir
+
+def get_library_titles(path: Path) -> list[str]:
+    return [get_library_title(file) for file in seek.get_agda_files(path)]

@@ -46,6 +46,11 @@ def init():
 def install(git: str):
     repo_dir = save.download_into_agdapm(git)
     print(f"Cloned into [green]{repo_dir}[/green]!")
+    titles = save.get_library_titles(repo_dir)
+    if titles:
+        print("Libraries: " + ", ".join(f"[cyan]{title}[/cyan]" for title in titles))
+    else:
+        print("[red]No Agda library files found in the repository.[/red]")
     typer.confirm(f"Are you sure you would like to re-generate defaults and config files into {default}?", abort=True)
     save.generate_defaults()
     save.generate_libraries()
