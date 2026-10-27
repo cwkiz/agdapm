@@ -7,4 +7,4 @@ Run ```py .\meta.py init```, then ``` py .\meta.py install ``` followed by a Git
 
 Example usage: ``` py .\meta.py install https://github.com/agda/agda-categories ```
 
-It should then rebuild your defaults and config.
+It should then rebuild your defaults and config. It'll store the repository content in a default directory the tool will generate (~/.agdapm or AppData\Roaming\agdapm) and link the configs to it.
