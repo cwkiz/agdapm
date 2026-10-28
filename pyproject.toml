@@ -16,6 +16,11 @@ license-files = ["LICEN[CS]E*"]
 [project.scripts]
 agdapm = "agdapm.cli:main"
 
+
+[project.urls]
+Homepage = "https://github.com/cwkiz/agdapm"
+Repository = "https://github.com/cwkiz/agdapm.git"
+
 [build-system]
 requires = ["hatchling >= 1.26"]
 build-backend = "hatchling.build"
