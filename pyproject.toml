@@ -8,10 +8,13 @@ description = "A small package manager for Agda"
 readme = "README.md"
 requires-python = ">=3.9"
 classifiers = [
-    "Agda I Guess"
+    "Programming Language :: Python :: 3"
 ]
 license = "MIT"
 license-files = ["LICEN[CS]E*"]
+
+[project.scripts]
+agdapm = "agdapm.cli:main"
 
 [build-system]
 requires = ["hatchling >= 1.26"]
