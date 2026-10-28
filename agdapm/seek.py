@@ -35,12 +35,12 @@ def agdapm_defaults():
 
 def fetch_install_dir(path, latest: bool):
     paths = sorted(
-        path.iterdir(),
+        (entry for entry in path.iterdir() if entry.is_dir()),
         key=lambda x: tuple(map(int, re.findall(r"\d+", x.name))),
         reverse=True
     )
     if latest:
-        return paths[0]
+        return paths[0] if paths else None
     else:  
         return paths
 

@@ -9,11 +9,17 @@ def version(list: bool = False) -> None:
     print(f"Agdapm install: [cyan]0.0.1[/cyan]") # yes hardcoded
     if list:
         dirs = seek.fetch_install_dir(default, False)
-        for idx, path in enumerate(dirs):
-            print(f"Agda install [green]{idx + 1}: {path}[/green]")
+        if dirs:
+            for idx, path in enumerate(dirs):
+                print(f"Agda install [green]{idx + 1}: {path}[/green]")
+        else:
+            print("[yellow]No Agda version directories found.[/yellow]")
     else:
         path = seek.fetch_install_dir(default, True)
-        print(f"Agda install: [green]{path}[/green]")
+        if path is None:
+            print("[yellow]No Agda version directories found.[/yellow]")
+        else:
+            print(f"Agda install: [green]{path}[/green]")
 
 
 def list_command() -> None:
