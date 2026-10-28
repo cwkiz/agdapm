@@ -43,9 +43,10 @@ def init():
     save.generate_agdapm()
 
 @app.command()
-def install(git: str):
-    repo_dir = save.download_into_agdapm(git)
-    print(f"Cloned into [green]{repo_dir}[/green]!")
+def install(source: str):
+    repo_dir, copied = save.install_source(source)
+    action = "Copied into" if copied else "Cloned into"
+    print(f"{action} [green]{repo_dir}[/green]!")
     titles = save.get_library_titles(repo_dir)
     if titles:
         print("Libraries: " + ", ".join(f"[cyan]{title}[/cyan]" for title in titles))
